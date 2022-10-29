@@ -12,16 +12,16 @@
     padding: 2.5px;
 }
 
+.btn-style.bg-num:hover{
+    color: #7f88ea;
+    transition: 0.1s;
+}
+
 .bg-num{
     color: #f2f2f2;
 }
 
 .bg-operation{
     color: #ac7a86;
-}
-
-.button-num:hover{
-    color: #7f88ea;
-    transition: 0.1s;
 }
 
