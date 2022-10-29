@@ -1,0 +1,27 @@
+.keyboard{
+    grid-template-columns: repeat(4, auto);
+    gap: 6px;  
+}
+
+.btn-style{
+    background-color: rgba(39, 42, 50, 0.8);
+    border-radius: 10px;
+    height: 40px;
+    border: none;
+    font-weight: 300;
+    padding: 2.5px;
+}
+
+.bg-num{
+    color: #f2f2f2;
+}
+
+.bg-operation{
+    color: #ac7a86;
+}
+
+.button-num:hover{
+    color: #7f88ea;
+    transition: 0.1s;
+}
+

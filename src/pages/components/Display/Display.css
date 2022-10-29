@@ -1,0 +1,19 @@
+.display{
+    width: 400px;
+    height: 200px;
+    border-radius: 6px 6px 0 0;
+    background-color: rgba(28, 27, 34, 0.8);
+    padding: 5px;
+}
+
+.nums-top{
+    font-size: 18px;
+    font-weight: 300;
+    color: #fff;
+}
+
+.nums-down{
+    font-size: 24px;
+    font-weight: bold;
+    color: #fff;
+}

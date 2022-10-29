@@ -1,0 +1,16 @@
+html, body, #app, #app>div {
+    height: 100%
+}
+
+.flex { display: flex; }
+.grid { display: grid; }
+
+.justify-end{ justify-content: flex-end; }
+.justify-center { justify-content: center; }
+
+.end { align-items: flex-end; }
+.center { align-items: center; }
+
+.margin-t-10{
+    margin-top: 5px;
+}
