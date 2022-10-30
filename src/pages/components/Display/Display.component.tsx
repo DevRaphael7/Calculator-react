@@ -9,7 +9,6 @@ function GetNumbers() { //Nome de função letra maiúscula.
         { state.num1 !== "0" ? <p className='nums-top'>{ state.operation } { state.num1 }</p> : <div></div> }
         <p className='nums-down'>{ state.num2 }</p>
     </div>
-        
 }
 
 export class Display extends React.Component {

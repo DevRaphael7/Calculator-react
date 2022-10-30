@@ -39,23 +39,35 @@ const ButtonSetOperation = (props: any) => {
 
         let num = 0
 
-        if(props.operation === "+") {
-            num = Number(state.num1) + Number(state.num2);
-        } else if (props.operation === "-") {
-            num = Number(state.num1) - Number(state.num2);
-        } else if (props.operation === "/") {
-            num = Number(state.num1) / Number(state.num2);
-        } else if (props.operation === "*") {
-            num = Number(state.num1) * Number(state.num2);
-        } else if (props.operation === "%") {
-            num = Number(state.num1) % Number(state.num2);
+        const [numberOne, numberTwo] = [
+            (state.num1 as string).replaceAll(",", "."),
+            (state.num2 as string).replaceAll(",", ".")
+        ]
+
+        if(props.operation === "+" || state.operation === "+") {
+            num = Number(numberOne) + Number(numberTwo);
+        } else if (props.operation === "-" || state.operation === "-") {
+            num = Number(numberOne) - Number(numberTwo);
+        } else if (props.operation === "/" || state.operation === "/") {
+            num = Number(numberOne) / Number(numberTwo);
+        } else if (props.operation === "*" || state.operation === "*") {
+            num = Number(numberOne) * Number(numberTwo);
+        } else if (props.operation === "%"  || state.operation === "%") {
+            num = Number(numberOne) % Number(numberTwo);
+        } else if (props.operation === "←") {
+            console.log(Number(numberTwo.slice(0, numberTwo.length - 1)))
+            num = Number(numberTwo.slice(0, numberTwo.length - 1));
+            dispatch(setNum2(num))
+            return
         }
 
-        console.log(num)
-
-        dispatch(setNum1(num.toString()))
-        dispatch(setNum2("0"))
-
+        if (props.operation === "=") {
+            dispatch(setNum2(num.toString()))
+            dispatch(setNum1("0"))
+        } else {
+            dispatch(setNum1(num.toString()))
+            dispatch(setNum2("0"))
+        }
     }} className="btn-style bg-operation">{props.operation}</button>
 }
 
@@ -64,22 +76,26 @@ export class KeyBoard extends React.Component {
     render(): React.ReactNode {
         return <div style={ {'padding':'10px', 'backgroundColor':'#22252d'}}>
             <div className='grid keyboard'>
+                <ButtonSetOperation operation="%" />
+                <ClearAllButton />
+                <ButtonSetOperation operation="←" />
+                <ButtonSetOperation operation="*" />
                 <ButtonSetStateNum2 number={9} />
                 <ButtonSetStateNum2 number={8} />
                 <ButtonSetStateNum2 number={7} />
-                <ButtonSetOperation operation="+" />
+                <ButtonSetOperation operation="/" />
                 <ButtonSetStateNum2 number={6} />
                 <ButtonSetStateNum2 number={5} />
                 <ButtonSetStateNum2 number={4} />
-                <ButtonSetOperation operation="-" />
+                <ButtonSetOperation operation="+" />
                 <ButtonSetStateNum2 number={3} />
                 <ButtonSetStateNum2 number={2} />
                 <ButtonSetStateNum2 number={1} />
-                <ButtonSetOperation operation="/" />
-                <ClearAllButton />
+                <ButtonSetOperation operation="-" />
+                <ButtonSetOperation operation=" " />
                 <ButtonSetStateNum2 number={0} />
-                <ButtonSetOperation operation="%" />
-                <ButtonSetOperation operation="*" />
+                <ButtonSetStateNum2 number={','} />
+                <ButtonSetOperation operation="=" />
             </div>
         </div>
     }

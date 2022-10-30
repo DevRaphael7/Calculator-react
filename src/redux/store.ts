@@ -2,7 +2,7 @@ import { reducerCalc } from "./reducers/calculator.reducer";
 import { configureStore } from '@reduxjs/toolkit'
 
 export interface StoreModel {
-    calculator: { num1: number, num2: number }
+    calculator: { num1: number, num2: number, operation: string }
 }
 
 export const store = configureStore({
