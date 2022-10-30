@@ -24,6 +24,18 @@ const ButtonSetStateNum2 = (props: any) => {
         className="btn-style bg-num">{props.number}</button>
 }
 
+const BackSpaceButton = () => {
+    const dispatch = useDispatch()
+    const state: any = useSelector<StoreModel>((state) => state.calculator);
+
+    return <button onClick={() => {
+        const numberTwo = (state.num2 as string).toString()
+        
+        const num = Number(numberTwo.slice(0, numberTwo.length - 1));
+        dispatch(setNum2(num))
+    }} className="btn-style bg-operation">←</button>
+}
+
 const ButtonSetOperation = (props: any) => {
     const dispatch = useDispatch()
     const state: any = useSelector<StoreModel>((state) => state.calculator);
@@ -68,6 +80,7 @@ const ButtonSetOperation = (props: any) => {
             dispatch(setNum1(num.toString()))
             dispatch(setNum2("0"))
         }
+
     }} className="btn-style bg-operation">{props.operation}</button>
 }
 
@@ -78,7 +91,7 @@ export class KeyBoard extends React.Component {
             <div className='grid keyboard'>
                 <ButtonSetOperation operation="%" />
                 <ClearAllButton />
-                <ButtonSetOperation operation="←" />
+                <BackSpaceButton />
                 <ButtonSetOperation operation="*" />
                 <ButtonSetStateNum2 number={9} />
                 <ButtonSetStateNum2 number={8} />
